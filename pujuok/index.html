@@ -54,7 +54,6 @@
 	  background: url('bg.jpg') repeat;
       background-size: auto;
       padding:60px 0px;
-      padding-bottom: calc(80px + env(safe-area-inset-bottom));
 	  
     }
 	#section4.section {	
@@ -178,6 +177,20 @@
     fallback.style.display = 'block';
     video.style.display = 'none';
   });
+
+// 하단 여백 
+  window.addEventListener('load', adjustBottomPadding);
+  window.addEventListener('resize', adjustBottomPadding);
+
+  function adjustBottomPadding() {
+    const menu = document.querySelector('.menu');
+    const content = document.querySelector('.section'); // 또는 '.main-content' 등 원하는 대상
+
+    if (menu && content) {
+      const menuHeight = menu.offsetHeight;
+      content.style.paddingBottom = (menuHeight + 20) + 'px';
+    }
+  }
 </script>
 </body>
 </html>
